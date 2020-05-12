@@ -24,8 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-var srcPath = path.join(__dirname,'/sass');
-var destPath = __dirname;
+var srcPath = path.join(__dirname,'public');
+var destPath = path.join(__dirname,'public');
 
 app.use('/', sassMiddleware({
   src: srcPath,

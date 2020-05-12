@@ -23,7 +23,7 @@ a {
 }
 
 #logo {
-  width: auto;
+  width: 100%;
   animation: rota 10s 3;
   transform-origin: center center;
   margin-top: 2rem;
