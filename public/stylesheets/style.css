@@ -46,7 +46,46 @@ a {
 
 .product {
   background-color: #20394d;
-  height: 20%;
+  height: auto;
   margin-bottom: 2rem;
   padding: 1rem;
+  max-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product h2.name {
+  flex-basis: 100%;
+  display: inline-block;
+}
+
+.product h3.price {
+  font-style: italic;
+  display: block;
+  text-align: left;
+}
+
+.product .prodImg {
+  height: 50vh;
+  display: inline-block;
+  object-fit: contain;
+  object-position: left center;
+  flex-basis: 40%;
+}
+
+.product .description {
+  display: inline-block;
+  width: 38%;
+  padding: 2%;
+  border: 1px solid white;
+  flex-basis: 40%;
+}
+
+.product .add_to_cart {
+  color: white;
+  background-color: #1c202e;
+  padding-bottom: 1%;
+  padding-top: 1%;
 }

@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('artshop:server');
+var debug = require('debug')('fadeskincare:server');
 var http = require('http');
 
 /**

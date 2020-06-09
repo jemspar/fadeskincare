@@ -5,6 +5,8 @@ var sassMiddleware = require('node-sass-middleware');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var session = require('express-session');
 
 
 // ROUTES
@@ -14,16 +16,39 @@ var app = express();
 
 var stripe = require("stripe")("pk_test_babuAnnlO0CWBPRj3GugrxDI00pa8C57xW");
 
-// view engine setup
+
+// MONGOOSE
+mongoose
+.connect('mongodb+srv://fadeapp:itsdatatime@fadeskincare-g2mqj.azure.mongodb.net/fadeskincare?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log("Successfully connected to MongoDB."))
+.catch(err => {
+  console.error("Connection error", err)
+  db.close()
+});
+
+var db = mongoose.connection;
+
+
+// view engine setup -----------------------------
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// app.set('css engine', 'sass');
+// END -------------------------------------------
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use(session({
+  secret: "almost like someone lives here",
+  resave: false,
+  saveUninitialized: false,
+}));
+
+
+
+
+// SASS PREPROCESSING FOR ALL PAGES ------------
 var srcPath = path.join(__dirname,'public');
 var destPath = path.join(__dirname,'public');
 
@@ -33,10 +58,14 @@ app.use('/', sassMiddleware({
   debug: true,
   outputStyle: 'expanded'
 }));
+// END -----------------------------------------
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// ROUTERS ---------------------
 app.use('/', indexRouter);
+// END -------------------------
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

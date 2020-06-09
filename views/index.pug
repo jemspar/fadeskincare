@@ -1,5 +1,8 @@
 extends layout
 
+block scripts
+  script(src="/javascripts/index.js")
+
 block nav
   h1= title
   p > skincare shop <
@@ -7,13 +10,20 @@ block nav
     br
     | ° for all °
   img(src="/images/logo.svg", alt="fade logo", id="logo")
+  h3#cart_link
+    | items in cart: 
+    = cart.totalQty
 
 block content
-  .product
-    | day cream
-    br
-    | $40
-  .product
-    | night oil
-    br
-    | $50
+  each prod in products
+    .product
+      h2.name= prod.name
+      img(src=prod.imagePath, class="prodImg")
+      .description
+        h3.price
+          | $ 
+          = prod.price   
+        button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
+          | Add to cart
+        != md.toHTML(prod.description)
+
