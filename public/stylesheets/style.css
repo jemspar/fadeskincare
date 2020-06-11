@@ -13,6 +13,17 @@ h1 {
   font-size: 4rem;
 }
 
+#title {
+  position: sticky;
+  top: 10vh;
+  z-index: 5;
+}
+
+#cart_link {
+  position: sticky;
+  top: 20vh;
+}
+
 a {
   color: #00B7FF;
 }
@@ -20,6 +31,9 @@ a {
 #left {
   flex-basis: 30%;
   padding-right: 4rem;
+  top: 0px;
+  position: sticky;
+  height: auto;
 }
 
 #logo {

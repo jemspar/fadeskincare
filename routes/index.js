@@ -42,4 +42,8 @@ router.post('/add-to-cart/:id', function(req, res, next) {
   });
 });
 
+router.get('/get-cart', function(req, res) {
+  res.send(req.session.cart);
+});
+
 module.exports = router;

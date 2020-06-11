@@ -4,15 +4,15 @@ block scripts
   script(src="/javascripts/index.js")
 
 block nav
-  h1= title
+  h1#title= title
   p > skincare shop <
   p ° fade up °
     br
     | ° for all °
-  img(src="/images/logo.svg", alt="fade logo", id="logo")
+  img(src="/images/fade_logo_web.svg", alt="fade logo", id="logo")
   h3#cart_link
     | items in cart: 
-    = cart.totalQty
+    span#cart_items= cart.totalQty
 
 block content
   each prod in products
