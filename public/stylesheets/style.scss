@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap');
 
 $darkblu: #1c202e;
+$midblu: #20394d;
 
 body {
   padding: 50px;
@@ -62,7 +63,7 @@ a {
 
 
 .product {
-  background-color: #20394d;
+  background-color: $midblu;
   height: auto;
   margin-bottom: 2rem;
   padding: 1rem;
@@ -106,4 +107,9 @@ a {
     padding-bottom: 1%;
     padding-top: 1%;
   }
+}
+
+#paypal-button-container {
+  max-width: 500px;
+  margin-top: 50px;
 }

@@ -3,16 +3,11 @@ extends layout
 block scripts
   script(src="/javascripts/index.js")
 
-block nav
-  h1#title= title
-  p > skincare shop <
-  p ° fade up °
-    br
-    | ° for all °
-  img(src="/images/fade_logo_web.svg", alt="fade logo", id="logo")
-  h3#cart_link
-    | items in cart: 
-    span#cart_items= cart.totalQty
+block cart_summary
+  a(href="/cart")
+    h3#cart_link
+      | items in cart: 
+      span#cart_items= cart.totalQty
 
 block content
   each prod in products

@@ -1,0 +1,17 @@
+extends layout
+
+block scripts
+    script(src="https://www.paypal.com/sdk/js?client-id=AcW6eH0xbAOeytXMN0dNv4wfY78uWAi5adeNLTVLnBno0RSNONH2FsSvc9RLLrAWDDH1V7WX_PaRLcIp")
+
+block content
+    h1 cart
+    each cartItem in cart.genArray()
+        .cart-item
+            p=cartItem.item.name
+            p=cartItem.qty
+
+
+    #paypal-button-container
+
+    script(src="/javascripts/paypal-test.js")
+    

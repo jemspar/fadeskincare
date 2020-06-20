@@ -2,12 +2,22 @@ doctype html
 html
   head
     title= title
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://code.jquery.com/jquery-3.5.1.min.js")
     script(src="http://code.jquery.com/color/jquery.color-2.1.2.min.js")
     block scripts
+  
+  
   body
     #left
-      block nav
+      h1#title FADE
+      p > skincare shop <
+      p ° fade up °
+        br
+        | ° for all °
+      img(src="/images/fade_logo_web.svg", alt="fade logo", id="logo")
+      block cart_summary
     #right
       block content

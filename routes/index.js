@@ -4,10 +4,15 @@ var mongoose = require('mongoose');
 var Product = require('../models/product');
 var Category = require('../models/category');
 var Cart = require('../models/cart');
+var handleOrder = require('../order');
 var md = require('markdown').markdown;
 
+
+//----------CSRF protection
 var csrf = require('csurf');
 var csrfProtection = csrf();
+//--------------------------
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -44,6 +49,20 @@ router.post('/add-to-cart/:id', function(req, res, next) {
 
 router.get('/get-cart', function(req, res) {
   res.send(req.session.cart);
+});
+
+router.get('/cart', function(req,res) {
+
+  res.render('cart', {
+    title: "Cart — Fade",
+    md: md,
+    cart: new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 }),
+    
+  })
+});
+
+router.post('/handle-order', function(req,res) {
+  handleOrder(req,res);
 });
 
 module.exports = router;
