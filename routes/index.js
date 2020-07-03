@@ -53,16 +53,25 @@ router.get('/get-cart', function(req, res) {
 
 router.get('/cart', function(req,res) {
 
-  res.render('cart', {
-    title: "Cart — Fade",
-    md: md,
-    cart: new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 }),
-    
-  })
+  if (req.session.cart) {
+    res.render('cart', {
+      title: "Cart — Fade",
+      md: md,
+      cart: new Cart(req.session.cart),     
+    });
+  } else {
+    res.render('cart', {
+      title: "Cart — Fade",
+      md: md,
+      cart: null,     
+    });
+  }
+  
 });
 
 router.post('/handle-order', function(req,res) {
   handleOrder(req,res);
 });
+
 
 module.exports = router;

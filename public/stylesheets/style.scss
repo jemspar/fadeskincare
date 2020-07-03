@@ -17,6 +17,13 @@ h1 {
   text-transform: uppercase;
   font-size: 4rem;
 
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: $midblu;
+  }
 }
 
 #title {

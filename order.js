@@ -10,8 +10,15 @@ const paypal = require('@paypal/checkout-server-sdk');
  */
 const payPalClient = require('./models/paypal');
 
+const Cart = require('./models/cart');
+
 // 2. Set up your server to receive a call from the client
 module.exports = async function handleRequest(req, res) {
+
+  var cart = new Cart(req.session.cart);
+  var cartArr = cart.genPaypalArray();
+  console.log(cartArr);
+  var total = cart.totalPrice.toFixed(2);
 
   // 3. Call PayPal to set up a transaction
   const request = new paypal.orders.OrdersCreateRequest();
@@ -21,9 +28,24 @@ module.exports = async function handleRequest(req, res) {
     purchase_units: [{
       amount: {
         currency_code: 'USD',
-        value: '220.00'
-      }
-    }]
+        value: total,
+        breakdown: {
+          item_total: {
+            currency_code: 'USD',
+            value: total,
+          },
+          shipping: {
+            currency_code: 'USD',
+            value: '0.00',
+          },
+          tax_total: {
+            currency_code: 'USD',
+            value: '0.00',
+          }
+        },
+      },
+      items: cartArr,
+    }],
   });
 
   let order;

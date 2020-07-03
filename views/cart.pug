@@ -5,13 +5,20 @@ block scripts
 
 block content
     h1 cart
-    each cartItem in cart.genArray()
-        .cart-item
-            p=cartItem.item.name
-            p=cartItem.qty
+    if cart
+        each cartItem in cart.genArray()
+            div(class="cart-item",id=cartItem.item._id)
+                span=cartItem.item.name + ",  quantity " + cartItem.qty
+        h3
+            em
+                = "Total: $" + cart.totalPrice
+        #paypal-button-container
+        script(src="/javascripts/paypal-test.js")
+    else
+        p Your cart is empty. Why not go 
+            a(href="/")
+                | add something?
 
 
-    #paypal-button-container
 
-    script(src="/javascripts/paypal-test.js")
     

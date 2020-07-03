@@ -12,8 +12,8 @@ function addToCart(prodId) {
         })
         .done((cart) => {
             $('#cart_items').text(cart.totalQty);
-            $('#cart_link').css('background-color' , '#000022');
-            $('#cart_link').animate({
+            $('#cart_link').css('background-color' , '#000022')
+            .animate({
                 'background-color': 'rgba(0,0,0,0)'
             }, 800);
             

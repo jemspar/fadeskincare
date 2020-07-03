@@ -13,6 +13,15 @@ h1 {
   font-size: 4rem;
 }
 
+h1 a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+h1 a:hover {
+  color: #20394d;
+}
+
 #title {
   position: sticky;
   top: 10vh;
