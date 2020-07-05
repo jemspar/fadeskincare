@@ -30,7 +30,7 @@ module.exports = function Cart(oldCart){
                 name: item.item.name.toString(),
                 unit_amount: {
                     currency_code: "USD",
-                    unit_amount: Number(item.item.price).toFixed(2),
+                    value: Number(item.item.price).toFixed(2),
                 },
                 quantity: item.qty.toString(),
                 category: "PHYSICAL_GOODS",

@@ -6,8 +6,8 @@ function client() {
 }
 
 function environment() {
-  let clientId = "AcW6eH0xbAOeytXMN0dNv4wfY78uWAi5adeNLTVLnBno0RSNONH2FsSvc9RLLrAWDDH1V7WX_PaRLcIp";
-  let clientSecret = "EIcJTNQ2mMXdOZaPVanHgpFIqTDIZrPWJyxyCcEvq3-reZ2rZZsKH80_C5snXdtVAZ9earfz-2N4qJD6";
+  let clientId = "AT02gI6RH8phPj8RlVEXWYkMBrKwwMCg6Odi3R9xU_pW44dLZcjaeNLWkaYEMqeCShWNBXWwh5PBWDUt";
+  let clientSecret = "EB9x0reO6l0Q-D3Tq2xmgRHgoi7BN1G3AL7asWaAbdro2Sbb0ZYBjhnnJamfYiBQWIbNmmciB8od_B5w";
 
   return new paypal.core.SandboxEnvironment(
     clientId, clientSecret

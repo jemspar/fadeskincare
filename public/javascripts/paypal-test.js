@@ -13,7 +13,12 @@ paypal.Buttons({
       }, 
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name);
+          console.log(details);
+          $('#paypal-button-container').detach();
+          $('#right').append('\
+            <h3>Thanks for your order!</h3>\
+            <p>Your order ID is: ' + details.id +
+          '. Check your email or Paypal account for order details.');
         });
       }
     }).render('#paypal-button-container'); // Display payment options on your web page
