@@ -7,9 +7,9 @@ function client() {
 
 function environment() {
   let clientId = "AT02gI6RH8phPj8RlVEXWYkMBrKwwMCg6Odi3R9xU_pW44dLZcjaeNLWkaYEMqeCShWNBXWwh5PBWDUt";
-  let clientSecret = "EB9x0reO6l0Q-D3Tq2xmgRHgoi7BN1G3AL7asWaAbdro2Sbb0ZYBjhnnJamfYiBQWIbNmmciB8od_B5w";
+  let clientSecret = "EPHM4qu0Mi7L5vESeQ4dF14geiggSsT-SLvwW79C9-TFEM3mxNqfDkekug644ZR_GX4tk4HgTjOd_RlN";
 
-  return new paypal.core.SandboxEnvironment(
+  return new paypal.core.LiveEnvironment(
     clientId, clientSecret
     );
 

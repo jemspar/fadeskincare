@@ -14,7 +14,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-var stripe = require("stripe")("pk_test_babuAnnlO0CWBPRj3GugrxDI00pa8C57xW");
+// var stripe = require("stripe")("pk_test_babuAnnlO0CWBPRj3GugrxDI00pa8C57xW");
 
 
 // MONGOOSE
