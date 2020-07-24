@@ -3,8 +3,167 @@
 $darkblu: #1c202e;
 $midblu: #20394d;
 
+
+// DESKTOP
+
+@media screen and (min-aspect-ratio: 1) {
+
+  body {
+    padding: 50px;
+  }
+
+  #left {
+    flex-basis: 30%;
+    padding-right: 4rem;
+    top: 0px;
+    position: sticky;
+    height: auto;
+  }
+  
+  #logo {
+     width: 100%;
+     animation: rota 10s 3;
+     transform-origin: center center;
+     margin-top: 2rem;
+  }
+
+  
+  #right {
+    flex-basis: 70%;
+    border-left: #ffffff 1px solid;
+    padding-left: 4rem;
+  }
+
+  .product {
+    background-color: $midblu;
+    height: auto;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    max-width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  
+    h2.name {
+      flex-basis: 100%;
+      display: inline-block;
+    }
+  
+    h3.price {
+      font-style: italic;
+      display: block;
+      text-align: left;
+    }
+  
+  
+    .prodImg {
+      height: 50vh;
+      display: inline-block;
+      object-fit: contain;
+      object-position: left center;
+      flex-basis: 40%;
+    }
+  
+    .description {
+      display: inline-block;
+      width: 38%;
+      padding: 2%;
+      border: 1px solid white;
+      flex-basis: 40%;
+    }
+  
+    .add_to_cart {
+      color:white;
+      background-color: $darkblu;
+      padding-bottom: 1%;
+      padding-top: 1%;
+    }
+  }
+
+}
+
+// MOBILE
+
+@media screen and (max-aspect-ratio: 1) {
+  body {
+    flex-wrap: wrap;
+    padding:10px;
+  }
+
+  #left {
+    flex-basis: 100%;
+    padding-right: 4rem;
+    height: auto;
+  }
+  
+  #logo {
+    width: 90%;
+    animation: rota 10s 3;
+    transform-origin: center center;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  
+  #right {
+    width:100%;
+    border-left: #ffffff 1px solid;
+    padding-left: 0rem;
+  }
+
+  .product {
+    background-color: $midblu;
+    height: auto;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  
+    h2.name {
+      flex-basis: 100%;
+      display: inline-block;
+    }
+  
+    h3.price {
+      font-style: italic;
+      display: block;
+      text-align: left;
+    }
+  
+  
+    .prodImg {
+      height: 50vh;
+      display: inline-block;
+      object-fit: contain;
+      object-position: left center;
+      flex-basis: 40%;
+    }
+  
+    .description {
+      display: inline-block;
+      padding: 2%;
+      margin-top: 5%;
+      border: 1px solid white;
+      flex-basis: 90%;
+    }
+  
+    .add_to_cart {
+      color:white;
+      background-color: $darkblu;
+      padding-bottom: 1%;
+      padding-top: 1%;
+    }
+  }
+
+}
+
 body {
-  padding: 50px;
+  
   font: 14px 'Archivo', Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: space-between;
@@ -41,20 +200,7 @@ a {
   color: #00B7FF;
 }
 
-#left {
-  flex-basis: 30%;
-  padding-right: 4rem;
-  top: 0px;
-  position: sticky;
-  height: auto;
-}
 
-#logo {
-   width: 100%;
-   animation: rota 10s 3;
-   transform-origin: center center;
-   margin-top: 2rem;
-}
 
 @keyframes rota {
    0% {transform: rotateY(0)}
@@ -62,59 +208,7 @@ a {
 }
 
 
-#right {
-  flex-basis: 70%;
-  border-left: #ffffff 1px solid;
-  padding-left: 4rem;
-}
 
-
-.product {
-  background-color: $midblu;
-  height: auto;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  max-width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-
-  h2.name {
-    flex-basis: 100%;
-    display: inline-block;
-  }
-
-  h3.price {
-    font-style: italic;
-    display: block;
-    text-align: left;
-  }
-
-
-  .prodImg {
-    height: 50vh;
-    display: inline-block;
-    object-fit: contain;
-    object-position: left center;
-    flex-basis: 40%;
-  }
-
-  .description {
-    display: inline-block;
-    width: 38%;
-    padding: 2%;
-    border: 1px solid white;
-    flex-basis: 40%;
-  }
-
-  .add_to_cart {
-    color:white;
-    background-color: $darkblu;
-    padding-bottom: 1%;
-    padding-top: 1%;
-  }
-}
 
 #paypal-button-container {
   max-width: 500px;
