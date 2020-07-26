@@ -11,14 +11,21 @@ block cart_summary
 
 block content
   each prod in products
-    .product
-      h2.name= prod.name
-      img(src=prod.imagePath, class="prodImg")
-      .description
-        h3.price
-          | $ 
-          = prod.price   
-        button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
-          | Add to cart
-        != md.toHTML(prod.description)
+    if prod.available
+      .product
+        h2.name= prod.name
+        img(src=prod.imagePath, class="prodImg")
+        .description
+          h3.price
+            | $ 
+            = prod.price   
+          button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
+            | Add to cart
+          br
+          if prod.descriptionPath
+            p here is the path #{prod.descriptionPath}.
+          else if prod.description
+            != md.toHTML(prod.description)
+          else
+            | No description available.
 

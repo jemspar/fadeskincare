@@ -8,7 +8,7 @@
 
  var productSchema = new Schema({
     name: {type: String, required: true},
-    description: {type: String, required: true},
+    description: {type: String, required: false},
     imagePath: {type: String, required: true},
     price: {
         type: Number,
@@ -18,15 +18,19 @@
             ref: 'Category',
             validate: {
                 validator: function(v) {
-                    return FKHelper(mongoose.model('Tag'), v);
+                    return FKHelper(mongoose.model('Category'), v);
                 },
-                message: `Tag doesn't exist`
+                message: `Category doesn't exist`
             }
     }],
     available: {
         type: Boolean,
         default: true,
     },
+    descriptionPath: {
+        type: String,
+        required: false,
+    }
  });
 
  module.exports = mongoose.model('Product', productSchema);

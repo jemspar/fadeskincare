@@ -5,13 +5,22 @@ var Product = require('../models/product');
 var Category = require('../models/category');
 var Cart = require('../models/cart');
 var handleOrder = require('../order');
-var md = require('markdown').markdown;
+// var $ = require('jquery');
+const md = require('markdown').markdown;
+const fs = require('fs').promises;
+const fetch = require('node-fetch');
+
+// fs.open('../public/text/wakeup_oil_desc.md', 'r')
+// .then(fd => fs.read(fd))
+// .then(buf => {console.log(buf)})
+// .catch(err => {console.log(err)});
 
 
 //----------CSRF protection
 var csrf = require('csurf');
 var csrfProtection = csrf();
 //--------------------------
+
 
 
 /* GET home page. */
@@ -22,7 +31,8 @@ router.get('/', function(req, res, next) {
     { title: 'Fade',
     products: prods,
     md: md,
-    cart: req.session.cart ? req.session.cart : {totalQty: 0}
+    fetch: fetch,
+    cart: req.session.cart ? req.session.cart : {totalQty: 0},
     });
   })
   .catch((err) => console.error(err));

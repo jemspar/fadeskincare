@@ -27,3 +27,9 @@ function addToCart(prodId) {
     });
 
 };
+
+
+function get_desc(path) {
+    $.get(path)
+    .catch();
+}
