@@ -2,6 +2,8 @@ extends layout
 
 block scripts
   script(src="/javascripts/index.js")
+  script(src="https://unpkg.com/showdown/dist/showdown.min.js")
+  script(src="/javascripts/process_desc.js")
 
 block cart_summary
   a(href="/cart")
@@ -12,7 +14,7 @@ block cart_summary
 block content
   each prod in products
     if prod.available
-      .product
+      div(class='product' id=prod._id)
         h2.name= prod.name
         img(src=prod.imagePath, class="prodImg")
         .description
@@ -23,9 +25,8 @@ block content
             | Add to cart
           br
           if prod.descriptionPath
-            p here is the path #{prod.descriptionPath}.
-          else if prod.description
-            != md.toHTML(prod.description)
+            script.
+              processDescription("#{prod._id}", "#{prod.descriptionPath}");
           else
             | No description available.
 

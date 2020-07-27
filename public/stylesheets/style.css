@@ -170,7 +170,19 @@ a {
   width: 38%;
   padding: 2%;
   border: 1px solid white;
-  flex-basis: 40%;
+}
+
+@media (orientation: landscape) {
+  .product .description {
+    flex-basis: 40%;
+  }
+}
+
+@media (orientation: portrait) {
+  .product .description {
+    margin-top: 5%;
+    flex-basis: 90%;
+  }
 }
 
 .product .add_to_cart {

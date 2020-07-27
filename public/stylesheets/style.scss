@@ -174,8 +174,17 @@ a {
     width: 38%;
     padding: 2%;
     border: 1px solid white;
-    flex-basis: 40%;
+    @include landscape(){
+      flex-basis: 40%;
+    }
+    @include portrait() {
+      margin-top: 5%;
+      flex-basis: 90%;
+    }
   }
+  //     .description {
+//       
+//     }
 
   .add_to_cart {
     color:white;
@@ -186,38 +195,15 @@ a {
 }
 
 
-
+// TO DO: BRING BELOW STYLES UP
 
 
 // MOBILE
 
 // @media (max-aspect-ratio: 0.99) {
 
+  
 
-
-  
-//     h3.price {
-//       font-style: italic;
-//       display: block;
-//       text-align: left;
-//     }
-  
-  
-//     .prodImg {
-//       height: 50vh;
-//       display: inline-block;
-//       object-fit: contain;
-//       object-position: left center;
-//       flex-basis: 40%;
-//     }
-  
-//     .description {
-//       display: inline-block;
-//       padding: 2%;
-//       margin-top: 5%;
-//       border: 1px solid white;
-//       flex-basis: 90%;
-//     }
   
 //     .add_to_cart {
 //       color:white;

@@ -10,11 +10,6 @@ const md = require('markdown').markdown;
 const fs = require('fs').promises;
 const fetch = require('node-fetch');
 
-// fs.open('../public/text/wakeup_oil_desc.md', 'r')
-// .then(fd => fs.read(fd))
-// .then(buf => {console.log(buf)})
-// .catch(err => {console.log(err)});
-
 
 //----------CSRF protection
 var csrf = require('csurf');
@@ -30,8 +25,6 @@ router.get('/', function(req, res, next) {
     res.render('index', 
     { title: 'Fade',
     products: prods,
-    md: md,
-    fetch: fetch,
     cart: req.session.cart ? req.session.cart : {totalQty: 0},
     });
   })
