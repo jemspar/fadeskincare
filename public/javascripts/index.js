@@ -16,6 +16,9 @@ function addToCart(prodId) {
             .animate({
                 'background-color': 'rgba(0,0,0,0)'
             }, 800);
+            $("#" + prodId + " > .description > .added").toggle(100, function() {
+                setTimeout( () => {$(this).toggle("slow")},  1000);
+            });
             
         });
     })
@@ -27,9 +30,3 @@ function addToCart(prodId) {
     });
 
 };
-
-
-function get_desc(path) {
-    $.get(path)
-    .catch();
-}

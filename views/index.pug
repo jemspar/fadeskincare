@@ -8,8 +8,9 @@ block scripts
 block cart_summary
   a(href="/cart")
     h3#cart_link
-      | items in cart: 
+      | cart: 
       span#cart_items= cart.totalQty
+      |  items
 
 block content
   each prod in products
@@ -23,6 +24,9 @@ block content
             = prod.price   
           button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
             | Add to cart
+          span.added
+            img(src="/images/shooting-star.png", alt="shooting star emoji")
+            | added to cart!
           br
           if prod.descriptionPath
             script.

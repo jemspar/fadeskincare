@@ -162,11 +162,16 @@ a {
   }
 
   .prodImg {
-    height: 50vh;
+    // height: 50vh;
     display: inline-block;
     object-fit: contain;
     object-position: left center;
-    flex-basis: 40%;
+    @include landscape() {
+      flex-basis: 40%;
+    }
+    @include portrait() {
+      flex-basis: 100%;
+    }
   }
 
   .description {
@@ -182,9 +187,6 @@ a {
       flex-basis: 90%;
     }
   }
-  //     .description {
-//       
-//     }
 
   .add_to_cart {
     color:white;
@@ -192,28 +194,15 @@ a {
     padding-bottom: 1%;
     padding-top: 1%;
   }
+
+  .added {
+    color: white;
+    display: none;
+    margin-left: .5rem;
+    margin-top: 1rem;
+
+    img {
+      height: 3rem;
+    }
+  }
 }
-
-
-// TO DO: BRING BELOW STYLES UP
-
-
-// MOBILE
-
-// @media (max-aspect-ratio: 0.99) {
-
-  
-
-  
-//     .add_to_cart {
-//       color:white;
-//       background-color: $darkblu;
-//       padding-bottom: 1%;
-//       padding-top: 1%;
-//     }
-//   }
-
-
-
-
-

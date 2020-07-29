@@ -158,11 +158,21 @@ a {
 }
 
 .product .prodImg {
-  height: 50vh;
   display: inline-block;
   object-fit: contain;
   object-position: left center;
-  flex-basis: 40%;
+}
+
+@media (orientation: landscape) {
+  .product .prodImg {
+    flex-basis: 40%;
+  }
+}
+
+@media (orientation: portrait) {
+  .product .prodImg {
+    flex-basis: 100%;
+  }
 }
 
 .product .description {
@@ -190,4 +200,15 @@ a {
   background-color: #1c202e;
   padding-bottom: 1%;
   padding-top: 1%;
+}
+
+.product .added {
+  color: white;
+  display: none;
+  margin-left: .5rem;
+  margin-top: 1rem;
+}
+
+.product .added img {
+  height: 3rem;
 }
