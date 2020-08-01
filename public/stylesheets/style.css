@@ -136,7 +136,7 @@ a {
 
 @media (orientation: landscape) {
   .product {
-    max-width: 90%;
+    max-width: 800px;
   }
 }
 
@@ -165,7 +165,7 @@ a {
 
 @media (orientation: landscape) {
   .product .prodImg {
-    flex-basis: 40%;
+    flex-basis: 45%;
   }
 }
 
@@ -177,14 +177,13 @@ a {
 
 .product .description {
   display: inline-block;
-  width: 38%;
   padding: 2%;
   border: 1px solid white;
 }
 
 @media (orientation: landscape) {
   .product .description {
-    flex-basis: 40%;
+    flex-basis: 45%;
   }
 }
 

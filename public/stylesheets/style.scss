@@ -143,7 +143,7 @@ a {
   justify-content: space-between;
 
   @include landscape() {
-    max-width: 90%;
+    max-width: 800px;
   }
   @include portrait() {
     max-width: 100%;
@@ -167,7 +167,7 @@ a {
     object-fit: contain;
     object-position: left center;
     @include landscape() {
-      flex-basis: 40%;
+      flex-basis: 45%;
     }
     @include portrait() {
       flex-basis: 100%;
@@ -176,11 +176,11 @@ a {
 
   .description {
     display: inline-block;
-    width: 38%;
+    // width: 50%;
     padding: 2%;
     border: 1px solid white;
     @include landscape(){
-      flex-basis: 40%;
+      flex-basis: 45%;
     }
     @include portrait() {
       margin-top: 5%;
