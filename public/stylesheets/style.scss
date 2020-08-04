@@ -78,12 +78,14 @@ a {
 
 #paypal-button-container {
   max-width: 500px;
+  width: 100%;
   margin-top: 50px;
 }
 
 #left {
   @include landscape() {
     flex-basis: 30%;
+    width: 30%;
     padding-right: 4rem;
     position: sticky;
   }
@@ -152,6 +154,7 @@ a {
 
   h2.name {
     flex-basis: 100%;
+    width: 100%;
     display: inline-block;
   }
 
@@ -168,9 +171,11 @@ a {
     object-position: left center;
     @include landscape() {
       flex-basis: 45%;
+      width: 45%;
     }
     @include portrait() {
       flex-basis: 100%;
+      width: 100%;
     }
   }
 
@@ -181,10 +186,12 @@ a {
     border: 1px solid white;
     @include landscape(){
       flex-basis: 45%;
+      width: 45%;
     }
     @include portrait() {
       margin-top: 5%;
       flex-basis: 90%;
+      width: 90%;
     }
   }
 
@@ -204,5 +211,19 @@ a {
     img {
       height: 3rem;
     }
+  }
+}
+
+#cart {
+  h3 {
+    width: 100%;
+  }
+  .cart_item {
+    margin-top: 10px;
+  }
+  #items {
+    padding-bottom: 20px;
+    border-bottom: 2px solid white;
+    width: 100%;
   }
 }

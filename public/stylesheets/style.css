@@ -60,6 +60,7 @@ a {
 
 #paypal-button-container {
   max-width: 500px;
+  width: 100%;
   margin-top: 50px;
 }
 
@@ -71,6 +72,7 @@ a {
 @media (orientation: landscape) {
   #left {
     flex-basis: 30%;
+    width: 30%;
     padding-right: 4rem;
     position: sticky;
   }
@@ -148,6 +150,7 @@ a {
 
 .product h2.name {
   flex-basis: 100%;
+  width: 100%;
   display: inline-block;
 }
 
@@ -166,12 +169,14 @@ a {
 @media (orientation: landscape) {
   .product .prodImg {
     flex-basis: 45%;
+    width: 45%;
   }
 }
 
 @media (orientation: portrait) {
   .product .prodImg {
     flex-basis: 100%;
+    width: 100%;
   }
 }
 
@@ -184,6 +189,7 @@ a {
 @media (orientation: landscape) {
   .product .description {
     flex-basis: 45%;
+    width: 45%;
   }
 }
 
@@ -191,6 +197,7 @@ a {
   .product .description {
     margin-top: 5%;
     flex-basis: 90%;
+    width: 90%;
   }
 }
 
@@ -210,4 +217,18 @@ a {
 
 .product .added img {
   height: 3rem;
+}
+
+#cart h3 {
+  width: 100%;
+}
+
+#cart .cart_item {
+  margin-top: 10px;
+}
+
+#cart #items {
+  padding-bottom: 20px;
+  border-bottom: 2px solid white;
+  width: 100%;
 }
