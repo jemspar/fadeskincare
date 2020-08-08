@@ -15,11 +15,11 @@ block cart_summary
 block content
   each prod in products
     if prod.available
-      div(class='product' id=prod._id)
-        h2.name= prod.name
-        img(src=prod.imagePath, class="prodImg")
+      div(class='product' id=prod._id itemscope itemtype="https://schema.org/Product")
+        h2(class="name" itemprop="name")= prod.name
+        img(src=prod.imagePath, class="prodImg" itemprop="image" alt="product image of #{prod.name}")
         .description
-          h3.price
+          h3.price(itemprop="price")
             | $ 
             = prod.price   
           button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
