@@ -17,7 +17,11 @@ block content
     if prod.available
       div(class='product' id=prod._id itemscope itemtype="https://schema.org/Product")
         h2(class="name" itemprop="name")= prod.name
-        img(src=prod.imagePath, class="prodImg" itemprop="image" alt="product image of #{prod.name}")
+        div(style="display:none" itemprop="offer" itemscope itemtype="https://schema.org/Offer")
+          meta(itemprop="price" content=prod.price)
+          meta(itemprop="priceCurrency" content="USD")
+          meta(itemprop="availability" content="InStock")
+        img(src=prod.imagePath, class="prodImg" itemprop="image" alt="product image of "+prod.name)
         .description
           h3.price(itemprop="price")
             | $ 
