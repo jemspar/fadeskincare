@@ -15,7 +15,24 @@ block cart_summary
 block content
   each prod in products
     if prod.available
-      
+      script(type="application/ld+json").
+        {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "#{prod.name}",
+          "offers": {
+            "@type" : "Offer",
+            "price" : "#{prod.price}",
+            "priceCurrency" : "USD"
+          },
+          "image" : "https://fadeskincare.co/#{prod.imagePath}",
+          "brand" : {
+            "@type" : "Brand",
+            "name" : "FADE skincare"
+          },
+          "availability" : "InStock",
+          "url" : "https://fadeskincare.co/product/#{prod.slug}",
+        }
       div(class='product' id=prod._id)
         h2(class="name")
           a(href="/product/"+prod.slug)= prod.name
