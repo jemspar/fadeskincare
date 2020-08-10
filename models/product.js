@@ -30,6 +30,10 @@
     descriptionPath: {
         type: String,
         required: false,
+    },
+    slug: {
+        type: String,
+        required: true,
     }
  });
 

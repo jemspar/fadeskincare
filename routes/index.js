@@ -23,13 +23,25 @@ router.get('/', function(req, res, next) {
   Product.find().exec()
   .then((prods) => {
     res.render('index', 
-    { title: 'Fade',
+    { title: 'FADE skincare',
     products: prods,
     cart: req.session.cart ? req.session.cart : {totalQty: 0},
     });
   })
   .catch((err) => console.error(err));
 
+});
+
+router.get('/product/:product_slug', function(req,res) {
+  Product.findOne({slug: req.params.product_slug},
+    function(err,prod) {
+      res.render('index', 
+        {
+          title: prod.name + " | FADE skincare",
+          products: [prod],
+          cart: req.session.cart ? req.session.cart : {totalQty: 0}
+        });
+      });
 });
 
 router.post('/add-to-cart/:id', function(req, res, next) {
@@ -58,7 +70,7 @@ router.get('/cart', function(req,res) {
 
   if (req.session.cart) {
     res.render('cart', {
-      title: "Cart — Fade",
+      title: "Cart | FADE skincare",
       md: md,
       cart: new Cart(req.session.cart),     
     });
