@@ -33,27 +33,27 @@ block content
           "availability" : "InStock",
           "url" : "https://fadeskincare.co/product/#{prod.slug}",
         }
-      div(class='product' id=prod._id)
-        h2(class="name")
-          a(href="/product/"+prod.slug)= prod.name
-        div(style="display:none")
-          meta(content=prod.price)
-          meta(content="USD")
-          meta(content="InStock")
-        img(src="/"+prod.imagePath, class="prodImg" alt="product image of "+prod.name)
-        .description
-          h3.price
-            | $ 
-            = prod.price   
-          button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
-            | Add to cart
-          span.added
-            img(src="/images/shooting-star.png", alt="shooting star emoji")
-            | added to cart!
-          br
-          if prod.descriptionPath
-            script.
-              processDescription("#{prod._id}", "#{prod.descriptionPath}");
-          else
-            | No description available.
 
+      div(class="index_product" id=prod._id)
+        a(href="/product/"+prod.slug)
+          h2.name
+            =prod.name
+          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
+          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
+          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
+      //-   .description
+      //-     h3.price
+      //-       | $ 
+      //-       = prod.price   
+      //-     button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
+      //-       | Add to cart
+      //-     span.added
+      //-       img(src="/images/shooting-star.png", alt="shooting star emoji")
+      //-       | added to cart!
+      //-     br
+      //-     if prod.descriptionPath
+      //-       script.
+      //-         processDescription("#{prod._id}", "#{prod.descriptionPath}");
+      //-     else
+      //-       | No description available.
+  script $('.index_product > a').hover(function() {$(this).children('.prod_img').addClass('hover')});

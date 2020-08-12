@@ -227,3 +227,33 @@ a {
     width: 100%;
   }
 }
+
+.index_product a {
+  background-color: $midblu;
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: auto;
+  padding: 1rem;
+  
+  h2.name {
+    font-size: 2rem;
+    font-family: 'Archivo', sans-serif;
+    color: white;
+    width: 100%;
+    flex-basis: 100%;
+  }
+  .prod_img {
+    flex-basis:30%;
+    width: 30%;
+    height: 20rem;
+    object-fit: cover;
+  }
+  .hover {
+    transform: scale(85%);
+    opacity: 0.5;
+  }
+  
+}
