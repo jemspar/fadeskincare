@@ -4,6 +4,7 @@ block scripts
   script(src="/javascripts/index.js")
   script(src="/javascripts/showdown.min.js")
   script(src="/javascripts/process_desc.js")
+  script(src="/javascripts/product_hover.js")
 
 block cart_summary
   a(href="/cart")
@@ -56,4 +57,3 @@ block content
       //-         processDescription("#{prod._id}", "#{prod.descriptionPath}");
       //-     else
       //-       | No description available.
-  script $('.index_product > a').hover(function() {$(this).children('.prod_img').addClass('hover')});
