@@ -39,9 +39,8 @@ block content
         a(href="/product/"+prod.slug)
           h2.name
             =prod.name
-          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
-          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
-          img(src="/"+prod.imagePath, class="prod_img" alt="product image of "+prod.name)
+          each image in prod.images
+            img(src="/images/"+image, alt="product image for "+prod.name, class="prod_img")
       //-   .description
       //-     h3.price
       //-       | $ 
