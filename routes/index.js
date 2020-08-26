@@ -5,8 +5,7 @@ var Product = require('../models/product');
 var Category = require('../models/category');
 var Cart = require('../models/cart');
 var handleOrder = require('../order');
-// var $ = require('jquery');
-const md = require('markdown').markdown;
+
 const fs = require('fs').promises;
 const fetch = require('node-fetch');
 
