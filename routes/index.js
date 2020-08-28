@@ -21,7 +21,7 @@ var csrfProtection = csrf();
 router.get('/', function(req, res, next) {
   Product.find().exec()
   .then((prods) => {
-    res.render('index', 
+    res.render('index',
     { title: 'FADE skincare',
     products: prods,
     cart: req.session.cart ? req.session.cart : {totalQty: 0},
@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
 router.get('/product/:product_slug', function(req,res) {
   Product.findOne({slug: req.params.product_slug},
     function(err,prod) {
-      res.render('single_product', 
+      res.render('single_product',
         {
           title: prod.name + " | FADE skincare",
           products: prod,
@@ -70,17 +70,15 @@ router.get('/cart', function(req,res) {
   if (req.session.cart) {
     res.render('cart', {
       title: "Cart | FADE skincare",
-      md: md,
-      cart: new Cart(req.session.cart),     
+      cart: new Cart(req.session.cart),
     });
   } else {
     res.render('cart', {
       title: "Cart — Fade",
-      md: md,
-      cart: null,     
+      cart: null,
     });
   }
-  
+
 });
 
 router.post('/handle-order', function(req,res) {
