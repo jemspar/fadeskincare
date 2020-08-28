@@ -34,10 +34,10 @@ router.get('/', function(req, res, next) {
 router.get('/product/:product_slug', function(req,res) {
   Product.findOne({slug: req.params.product_slug},
     function(err,prod) {
-      res.render('index', 
+      res.render('single_product', 
         {
           title: prod.name + " | FADE skincare",
-          products: [prod],
+          products: prod,
           cart: req.session.cart ? req.session.cart : {totalQty: 0}
         });
       });

@@ -9,8 +9,11 @@ function environment() {
   let clientId = "AT02gI6RH8phPj8RlVEXWYkMBrKwwMCg6Odi3R9xU_pW44dLZcjaeNLWkaYEMqeCShWNBXWwh5PBWDUt";
   let clientSecret = "EPHM4qu0Mi7L5vESeQ4dF14geiggSsT-SLvwW79C9-TFEM3mxNqfDkekug644ZR_GX4tk4HgTjOd_RlN";
 
-  return new paypal.core.LiveEnvironment(
-    clientId, clientSecret
+  let sandboxId = "AcW6eH0xbAOeytXMN0dNv4wfY78uWAi5adeNLTVLnBno0RSNONH2FsSvc9RLLrAWDDH1V7WX_PaRLcIp";
+  let sandboxSecret = "EIcJTNQ2mMXdOZaPVanHgpFIqTDIZrPWJyxyCcEvq3-reZ2rZZsKH80_C5snXdtVAZ9earfz-2N4qJD6";
+
+  return new paypal.core.SandboxEnvironment(
+    sandboxId, sandboxSecret
     );
 
 }

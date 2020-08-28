@@ -18,7 +18,7 @@ module.exports = async function handleRequest(req, res) {
   var cart = new Cart(req.session.cart);
   var cartArr = cart.genPaypalArray();
   console.log(cartArr);
-  var total = cart.totalPrice.toFixed(2);
+  var subtotal = cart.totalPrice;
 
   // 3. Call PayPal to set up a transaction
   const request = new paypal.orders.OrdersCreateRequest();
@@ -28,15 +28,15 @@ module.exports = async function handleRequest(req, res) {
     purchase_units: [{
       amount: {
         currency_code: 'USD',
-        value: total,
+        value: (subtotal+5).toFixed(2),
         breakdown: {
           item_total: {
             currency_code: 'USD',
-            value: total,
+            value: subtotal,
           },
           shipping: {
             currency_code: 'USD',
-            value: '0.00',
+            value: '5.00',
           },
           tax_total: {
             currency_code: 'USD',
