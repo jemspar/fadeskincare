@@ -6,13 +6,14 @@
 - one product
 - no product pages
 - free shipping
+- regenerate paypal API key and store it as an environment variable
+- ^^ same with MongoDB password
+- free shipping only for san francisco, $4 elsewhere
+
 
 ---------
 ## TO DO
 
-### v0.6
-- regenerate paypal API key and store it as an environment variable
-- ^^ same with MongoDB password
-
-### v0.7
-- free shipping only for san francisco, $4 elsewhere
+### v1
+- three product images
+- add QUENCH serum
