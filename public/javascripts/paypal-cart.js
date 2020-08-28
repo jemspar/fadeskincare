@@ -25,10 +25,17 @@ paypal.Buttons({
       console.log(data.shipping_address);
       if (data.shipping_address.city == "San Francisco") {
         console.log('so u live in the city!');
-        return fetch('/get-cart', {
-          method: 'get'
+        
+        return fetch('/get-cart')
+        .then(function(cartResponse) {
+
+          return cartResponse.json();
+
         })
         .then(function(c) {
+
+        
+
           return actions.order.patch([
             {
                 op: 'replace',
@@ -51,10 +58,12 @@ paypal.Buttons({
                         }
                     }
                 }
-            }
-          ]);
+              }]);
+
         })
-        .catch( err => console.log(err) );
+        .catch(err => console.log(err));
+        
+        
       }
     }
   }).render('#paypal-button-container'); // Display payment options on your web page
