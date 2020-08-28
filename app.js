@@ -20,7 +20,7 @@ var app = express();
 
 // MONGOOSE
 mongoose
-.connect('mongodb+srv://fadeapp:itsdatatime@fadeskincare-g2mqj.azure.mongodb.net/fadeskincare?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+.connect('mongodb+srv://fadeapp:' + process.env.MONGO_CLIENT_PW + '@fadeskincare-g2mqj.azure.mongodb.net/fadeskincare?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log("Successfully connected to MongoDB."))
 .catch(err => {
   console.error("Connection error", err)

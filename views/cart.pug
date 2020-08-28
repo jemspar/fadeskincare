@@ -1,7 +1,7 @@
 extends layout
 
 block scripts
-    script(src="https://www.paypal.com/sdk/js?client-id=AcW6eH0xbAOeytXMN0dNv4wfY78uWAi5adeNLTVLnBno0RSNONH2FsSvc9RLLrAWDDH1V7WX_PaRLcIp&commit=false")
+    script(src="https://www.paypal.com/sdk/js?client-id=" + process.env.PAYPAL_CLIENT_ID + "&commit=false")
 
 block content
     h1 cart
