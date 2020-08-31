@@ -183,7 +183,6 @@ a {
 .product .description {
   display: inline-block;
   padding: 2%;
-  border: 1px solid white;
 }
 
 @media (orientation: landscape) {
