@@ -1,0 +1,39 @@
+extends layout
+
+block scripts
+  script(src="/javascripts/index.js")
+  script(src="/javascripts/showdown.min.js")
+  script(src="/javascripts/process_desc.js")
+
+block cart_summary
+  a(href="/cart")
+    h3#cart_link
+      | cart: 
+      span#cart_items= cart.totalQty
+      |  items
+
+block content
+  div(class='product' id=prod._id itemscope itemtype="https://schema.org/Product" itemref="left")
+    h2(class="name")
+      a(href="/product/"+prod.slug itemprop="name")= prod.name
+    div(style="display:none" itemprop="offers" itemscope itemtype="https://schema.org/Offer")
+      meta(itemprop="price" content=prod.price)
+      meta(itemprop="priceCurrency" content="USD")
+      meta(itemprop="availability" content="InStock")
+    img(src="/"+prod.imagePath, class="prodImg" itemprop="image" alt="product image of "+prod.name)
+    .description(itemprop="description")
+      h3.price(itemprop="price")
+        | $ 
+        = prod.price   
+      button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
+        | Add to cart
+      span.added
+        img(src="/images/shooting-star.png", alt="shooting star emoji")
+        | added to cart!
+      br
+      if prod.descriptionPath
+        script.
+          processDescription("#{prod._id}", "#{prod.descriptionPath}");
+      else
+        | No description available.
+

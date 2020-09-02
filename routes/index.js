@@ -32,16 +32,34 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/product/:product_slug', function(req,res) {
-  Product.findOne({slug: req.params.product_slug},
-    function(err,prod) {
-      res.render('single_product',
+  Product.findOne({slug: req.params.product_slug.toString()}).exec()
+  .then(  
+    function(doc) {
+      return doc.toJSON();
+    }
+  ).then(
+    function(prod) {
+      console.log('page for '+prod.name);
+      res.render('single_product', 
         {
           title: prod.name + " | FADE skincare",
-          products: prod,
+          prod: prod,
           cart: req.session.cart ? req.session.cart : {totalQty: 0}
-        });
-      });
+        }
+      );
+    }
+  )
+  .catch(
+    function(err) {
+      console.error(err);
+      res.redirect("/");
+    }
+  );
+    
 });
+
+
+
 
 router.post('/add-to-cart/:id', function(req, res, next) {
   var productId = req.params.id;
