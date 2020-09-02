@@ -4,4 +4,4 @@ formulated with powerful botanical oils which may have anti-inflammatory and ant
 
 ingredients: safflower oil, jojoba oil, *frankincense serrata* essential oil, oregano essential oil, lavender essential oil, eucalyptus essential oil.
 
-each ingredient is considered safe (rated 1 or 2) by [EWG Skin Deep](https://www.ewg.org/skindeep).
+each ingredient is considered safe (rated 1 or 2) by [EWG Skin Deep](https://www.ewg.org/skindeep).💙
