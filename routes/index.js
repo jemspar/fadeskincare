@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var Product = require('../models/product');
 var Category = require('../models/category');
 var Cart = require('../models/cart');
+var Visit = require('../models/visit');
 var handleOrder = require('../order');
 
 const fs = require('fs').promises;
@@ -21,6 +22,11 @@ var csrfProtection = csrf();
 router.get('/', function(req, res, next) {
   Product.find().exec()
   .then((prods) => {
+    if(req.params.src) {
+      var newVisit = {ip: req.ip, src: req.params.src, date: new Date()};
+      Visit.create(newVisit);
+    }
+
     res.render('index',
     { title: 'FADE skincare',
     products: prods,
