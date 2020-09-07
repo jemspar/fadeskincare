@@ -22,8 +22,8 @@ var csrfProtection = csrf();
 router.get('/', function(req, res, next) {
   Product.find().exec()
   .then((prods) => {
-    if(req.params.src) {
-      var newVisit = {ip: req.ip, src: req.params.src, date: new Date()};
+    if(req.query.src) {
+      var newVisit = {ip: req.ip, src: req.query.src, date: new Date()};
       Visit.create(newVisit);
     }
 
@@ -39,14 +39,14 @@ router.get('/', function(req, res, next) {
 
 router.get('/product/:product_slug', function(req,res) {
   Product.findOne({slug: req.params.product_slug.toString()}).exec()
-  .then(  
+  .then(
     function(doc) {
       return doc.toJSON();
     }
   ).then(
     function(prod) {
       console.log('page for '+prod.name);
-      res.render('single_product', 
+      res.render('single_product',
         {
           title: prod.name + " | FADE skincare",
           prod: prod,
@@ -61,7 +61,7 @@ router.get('/product/:product_slug', function(req,res) {
       res.redirect("/");
     }
   );
-    
+
 });
 
 
