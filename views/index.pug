@@ -10,7 +10,7 @@ block scripts
 block cart_summary
   a(href="/cart")
     h3#cart_link
-      | cart: 
+      | cart:
       span#cart_items= cart.totalQty
       |  items
 
@@ -22,6 +22,7 @@ block content
           "@context": "https://schema.org/",
           "@type": "Product",
           "name": "#{prod.name}",
+          "description": "#{prod.description}",
           "offers": {
             "@type" : "Offer",
             "price" : "#{prod.price}",
@@ -33,7 +34,7 @@ block content
             "name" : "FADE skincare"
           },
           "availability" : "InStock",
-          "url" : "https://fadeskincare.co/product/#{prod.slug}",
+          "url" : "https://fadeskincare.co/product/#{prod.slug}"
         }
 
       div(class="index_product" id=prod._id)
@@ -44,8 +45,8 @@ block content
             img(src="/images/"+image, alt="product image for "+prod.name, class="prod_img")
       //-   .description
       //-     h3.price
-      //-       | $ 
-      //-       = prod.price   
+      //-       | $
+      //-       = prod.price
       //-     button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
       //-       | Add to cart
       //-     span.added
