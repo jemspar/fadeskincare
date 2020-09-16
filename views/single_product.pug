@@ -35,7 +35,7 @@ block content
   
   div(class='product' id=prod._id)
     h2(class="name")
-      a(href="/product/"+prod.slug)= prod.name
+      = prod.name
     img(src="/"+prod.imagePath, class="prodImg" alt="product image of "+prod.name)
     .description
       h3.price
