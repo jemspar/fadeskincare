@@ -13,16 +13,32 @@ block cart_summary
       |  items
 
 block content
-  div(class='product' id=prod._id itemscope itemtype="https://schema.org/Product" itemref="left")
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "#{prod.name}",
+      "description": "#{prod.description}",
+      "offers": {
+        "@type" : "Offer",
+        "price" : "#{prod.price}",
+        "priceCurrency" : "USD"
+      },
+      "image" : "https://fadeskincare.co/images/#{prod.images[1]}",
+      "brand" : {
+        "@type" : "Brand",
+        "name" : "FADE skincare"
+      },
+      "availability" : "InStock",
+      "url" : "https://fadeskincare.co/product/#{prod.slug}"
+    }
+  
+  div(class='product' id=prod._id)
     h2(class="name")
-      a(href="/product/"+prod.slug itemprop="name")= prod.name
-    div(style="display:none" itemprop="offers" itemscope itemtype="https://schema.org/Offer")
-      meta(itemprop="price" content=prod.price)
-      meta(itemprop="priceCurrency" content="USD")
-      meta(itemprop="availability" content="InStock")
-    img(src="/"+prod.imagePath, class="prodImg" itemprop="image" alt="product image of "+prod.name)
-    .description(itemprop="description")
-      h3.price(itemprop="price")
+      a(href="/product/"+prod.slug)= prod.name
+    img(src="/"+prod.imagePath, class="prodImg" alt="product image of "+prod.name)
+    .description
+      h3.price
         | $ 
         = prod.price   
       button(onClick="addToCart(\"" + prod._id + "\")").add_to_cart
@@ -36,4 +52,3 @@ block content
           processDescription("#{prod._id}", "#{prod.descriptionPath}");
       else
         | No description available.
-
