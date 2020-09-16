@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+
+      <loc>https://fadeskincare.co</loc>
+
+      <lastmod>2020-09-14</lastmod>
+
+      <changefreq>weekly</changefreq>
+
+   </url>
+
+   <url>
+     <loc>https://fadeskincare.co/product/wakeup-oil</loc>
+     <lastmod>2020-09-14</lastmod>
+     <changefreq>weekly</changefreq>
+   </url>
+
+   <url>
+     <loc>https://fadeskincare.co/product/quench-serum</loc>
+     <lastmod>2020-09-14</lastmod>
+     <changefreq>weekly</changefreq>
+   </url>
+
+   <url>
+      <loc>https://fadeskincare.co/cart</loc>
+      <lastmod>2020-09-14</lastmod>
+      <changefreq>weekly</changefreq>
+    </url>
+
+</urlset>
