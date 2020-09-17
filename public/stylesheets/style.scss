@@ -52,14 +52,22 @@ h1 {
 }
 
 #title {
-  position: sticky;
+  @include landscape() {
+      position: sticky;
+  }
   top: 10vh;
   z-index: 5;
 }
 
 #cart_link {
-  position: sticky;
-  top: 20vh;
+  @include landscape() {
+    position: sticky;
+    top: 20vh;
+  }
+  @include portrait() {
+    width: 100%;
+    position: sticky;
+  }
 }
 
 a {
@@ -91,10 +99,13 @@ a {
   }
   @include portrait() {
     flex-basis: 100%;
-    padding-right: 4rem;
+    // padding-right: 4rem;
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
-  
+
   top: 0px;
   height: auto;
 }
@@ -123,6 +134,7 @@ a {
     flex-basis: 70%;
     width: 70%;
     padding-left: 4rem;
+    border-left: #ffffff 1px solid;
   }
 
   @include portrait() {
@@ -130,7 +142,7 @@ a {
     padding-left: 0rem;
   }
 
-  border-left: #ffffff 1px solid;
+
 }
 
 .product {
@@ -155,7 +167,12 @@ a {
   h2.name {
     flex-basis: 100%;
     width: 100%;
-    display: inline-block;
+    @include landscape() {
+          display: inline-block;
+    }
+    @include portrait() {
+      top: 0;
+    }
   }
 
   h3.price {
@@ -238,31 +255,42 @@ a {
   height: auto;
   padding: 1rem;
   margin-block-end: 2rem;
-  
+
   h2.name {
     font-size: 4rem;
     font-family: 'Archivo', sans-serif;
     color: white;
     // flex-basis: 100%;
-    position: absolute;
-    margin-left: auto;
-    margin-top: 8rem;
+    @include landscape() {
+      position: absolute;
+      margin-left: auto;
+      margin-top: 8rem;
+    }
     z-index: 3;
     text-shadow: #1c202e 1px 1px 10px;
   }
 
   .prod_img {
-    flex-basis:30%;
-    width: 30%;
-    height: 20rem;
+
+
     object-fit: cover;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 
-    transform: scale(85%);
-    opacity: 0.5;
+    @include landscape() {
+      flex-basis:30%;
+      width: 30%;
+      height: 20rem;
+      transform: scale(85%);
+      opacity: 0.5;
+    }
+    @include portrait() {
+      flex-basis: 100%;
+      padding-bottom: 1rem;
+    }
+
   }
   .hover {
     transform: none;
@@ -273,5 +301,5 @@ a {
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
-  
+
 }
