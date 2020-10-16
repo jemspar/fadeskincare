@@ -46,6 +46,11 @@ app.use(session({
   saveUninitialized: false,
 }));
 
+// helmet
+if (process.env.PRODUCTION) {
+  var helmet = require('helmet');
+  app.use(helmet());
+}
 
 
 

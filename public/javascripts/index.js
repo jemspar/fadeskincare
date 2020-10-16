@@ -2,7 +2,8 @@ function addToCart(prodId) {
     console.log(prodId);
 
     $.post({
-        url: '/add-to-cart/' + prodId,
+        url: '/add-to-cart',
+        data: {prodId: prodId}
     })
     .done(
         () => {
@@ -19,7 +20,7 @@ function addToCart(prodId) {
             $("#" + prodId + " > .description > .added").toggle(100, function() {
                 setTimeout( () => {$(this).toggle("slow")},  1000);
             });
-            
+
         });
     })
     .fail((err) => {
