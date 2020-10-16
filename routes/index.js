@@ -85,6 +85,17 @@ router.post('/add-to-cart/:id', function(req, res, next) {
   });
 });
 
+router.post('/remove-from-cart/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 });
+
+    cart.remove(productId);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    res.redirect('/cart');
+
+});
+
 router.get('/get-cart', function(req, res) {
   res.send(req.session.cart);
 });
