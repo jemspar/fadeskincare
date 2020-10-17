@@ -66,8 +66,10 @@ router.get('/product/:product_slug', function(req,res) {
 
 
 
-
+// ADD TO CART
 router.post('/add-to-cart', function(req, res, next) {
+  console.log('product to add: ' + req.body.prodId);
+  console.log('current cart: ' + req.session.cart);
 
   var productId = req.body.prodId;
   var cart = new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 });
@@ -76,48 +78,46 @@ router.post('/add-to-cart', function(req, res, next) {
     if (err) {
       console.error(err);
       res.redirect('/');
+    } else {
+      cart.add(prod, prod._id);
+      req.session.cart = cart;
+      console.log(req.session.cart);
     }
 
-    cart.add(prod, prod._id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
 
   });
+
+  res.end();
+
+
 });
 
 
 //TO DO: remove from cart
-router.post('/remove-from-cart', function(req, res, next) {
+router.post('/remove-from-cart', function(req, res) {
 
   var productId = req.body.prodId;
-  var cart = new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 });
 
-  Product.findById(productId, function(err, prod) {
-    if (err) {
-      console.error(err);
-      res.redirect('/');
-    }
-
-    cart.add(prod, prod._id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-
-  });
-});
-
-router.post('/remove-from-cart/:id', function(req, res, next) {
-  var productId = req.params.id;
-  var cart = new Cart(req.session.cart ? req.session.cart : { items: {}, totalQty: 0, totalPrice: 0 });
-
+  // if cart exists, we can remove something
+  if (req.session.cart) {
+    var cart = new Cart(req.session.cart);
     cart.remove(productId);
+
     req.session.cart = cart;
-    console.log(req.session.cart);
-    res.redirect('/cart');
+    console.log('new cart: ' + req.session.cart);
+  }
+
+
+  res.end();
 
 });
+
+
+
+
 
 router.get('/get-cart', function(req, res) {
-  res.send(req.session.cart);
+  res.send(req.session.cart ? req.session.cart : "cart is empty.");
 });
 
 router.get('/cart', function(req,res) {
@@ -138,6 +138,12 @@ router.get('/cart', function(req,res) {
 
 router.post('/handle-order', function(req,res) {
   handleOrder(req,res);
+});
+
+
+router.get('/test-session', function(req,res) {
+  req.session.test = req.session.test ? req.session.test+1 : 0;
+  res.send('test val is '+req.session.test);
 });
 
 

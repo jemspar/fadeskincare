@@ -3,6 +3,7 @@ module.exports = function Cart(oldCart){
     this.totalQty = oldCart.totalQty;
     this.totalPrice = oldCart.totalPrice;
 
+// ADD TO CART
     this.add = function(item, id) {
         var storedItem = this.items[id];
         if (!storedItem) {
@@ -12,6 +13,17 @@ module.exports = function Cart(oldCart){
         storedItem.qty++;
         this.totalQty++;
         this.totalPrice+= storedItem.item.price;
+    };
+
+// REMOVE FROM CART
+    this.remove = function(id) {
+        var storedItem = this.items[id];
+        if (storedItem) {
+            this.totalQty-=storedItem.qty;
+            this.totalPrice-= storedItem.item.price*storedItem.qty;
+            this.items[id] = null;
+        }
+
     };
 
     this.genArray = function () {
@@ -39,6 +51,6 @@ module.exports = function Cart(oldCart){
             arr.push(arrItem);
         }
         return arr;
-        
+
     }
 };

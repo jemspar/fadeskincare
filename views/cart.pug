@@ -2,6 +2,7 @@ extends layout
 
 block scripts
     script(src="https://www.paypal.com/sdk/js?client-id=" + process.env.PAYPAL_CLIENT_ID + "&commit=false")
+    script(src="/javascripts/index.js")
 
 block content
     h1 cart
@@ -12,6 +13,9 @@ block content
                 each cartItem in cart.genArray()
                     div(class="cart_item",id=cartItem.item._id)
                         span=cartItem.item.name + ",  quantity " + cartItem.qty
+                    div(class="remove_link")
+                      a(href="javascript:removeFromCart(#{cartItem.item._id})")
+                        | > Remove from cart
             h3
                 em
                     = "Subtotal: $" + cart.totalPrice

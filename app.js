@@ -5,8 +5,13 @@ var sassMiddleware = require('node-sass-middleware');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
-var session = require('express-session');
+
+// db
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
+// .env
 var dotenv = require('dotenv').config();
 
 
@@ -28,6 +33,14 @@ mongoose
 });
 
 var db = mongoose.connection;
+app.use(session({
+  store: new MongoStore({ mongooseConnection: db }),
+  secret: "almost like someone lives here",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {secure: true},
+  collection: 'sessions'
+}));
 
 
 // view engine setup -----------------------------
@@ -40,16 +53,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(session({
-  secret: "almost like someone lives here",
-  resave: false,
-  saveUninitialized: false,
-}));
+// session setup
+app.set('trust proxy', 1) // trust first proxy
+
 
 // helmet
+// TO DO: remove unsafe-inline scripts using nonces
 if (process.env.PRODUCTION) {
   var helmet = require('helmet');
-  app.use(helmet());
+  app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "code.jquery.com", "'unsafe-inline'", "www.paypal.com"],
+      styleSrc: ["'self'", "fonts.googleapis.com", "https://unpkg.com/normalize.css@8.0.1/normalize.css"],
+      fontSrc: ["fonts.gstatic.com"]
+    },
+  })
+);
 }
 
 
