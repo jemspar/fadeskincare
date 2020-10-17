@@ -14,7 +14,7 @@ block content
                     div(class="cart_item",id=cartItem.item._id)
                         span=cartItem.item.name + ",  quantity " + cartItem.qty
                     div(class="remove_link")
-                      a(href="javascript:removeFromCart(#{cartItem.item._id})")
+                      a(href="javascript:removeFromCart(\"" + cartItem.item._id + "\")")
                         | > Remove from cart
             h3
                 em

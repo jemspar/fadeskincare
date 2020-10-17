@@ -1,14 +1,14 @@
 var createError = require('http-errors');
 var express = require('express');
-// var sass = require('node-sass');
+
 var sassMiddleware = require('node-sass-middleware');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+
 var logger = require('morgan');
 
 // db
-const mongoose = require('mongoose');
-const session = require('express-session');
+var mongoose = require('mongoose');
+var session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 // .env
@@ -28,20 +28,26 @@ mongoose
 .connect('mongodb+srv://' + process.env.MONGO_CLIENT_USER + ':' + process.env.MONGO_CLIENT_PW + '@fadeskincare-g2mqj.azure.mongodb.net/fadeskincare?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log("Successfully connected to MongoDB."))
 .catch(err => {
-  console.error("Connection error", err)
-  db.close()
+  console.error("Connection error", err);
+  db.close();
 });
 
 var db = mongoose.connection;
-app.use(session({
-  store: new MongoStore({ mongooseConnection: db }),
-  secret: "almost like someone lives here",
-  resave: false,
-  saveUninitialized: true,
-  cookie: {secure: true},
-  collection: 'sessions'
-}));
+// app.use(session({
+//   store: new MongoStore({ mongooseConnection: db }),
+//   secret: "almost like someone lives here",
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: {secure: true},
+//   collection: 'sessions'
+// }));
 
+var MemoryStore = session.MemoryStore;
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 // view engine setup -----------------------------
 app.set('views', path.join(__dirname, 'views'));
@@ -51,10 +57,7 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
-// session setup
-app.set('trust proxy', 1) // trust first proxy
 
 
 // helmet
@@ -92,6 +95,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTERS ---------------------
 app.use('/', indexRouter);
+
+app.get('/test-session', function(req,res) {
+  if (req.session.test) {
+    req.session.test++;
+  } else {
+    req.session.test = 0;
+  }
+  console.log(req.session);
+  res.send("test val is " + req.session.test);
+});
 // END -------------------------
 
 // catch 404 and forward to error handler

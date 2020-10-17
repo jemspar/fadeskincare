@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+
+
 var mongoose = require('mongoose');
 var Product = require('../models/product');
 var Category = require('../models/category');
@@ -82,13 +84,10 @@ router.post('/add-to-cart', function(req, res, next) {
       cart.add(prod, prod._id);
       req.session.cart = cart;
       console.log(req.session.cart);
+      res.send(req.session.cart);
+      // req.session.save();
     }
-
-
   });
-
-  res.end();
-
 
 });
 
@@ -103,12 +102,15 @@ router.post('/remove-from-cart', function(req, res) {
     var cart = new Cart(req.session.cart);
     cart.remove(productId);
 
-    req.session.cart = cart;
-    console.log('new cart: ' + req.session.cart);
+    if (cart.totalQty == 0) {
+      req.session.cart = null;
+    } else {
+      req.session.cart = cart;
+    }
+
   }
 
-
-  res.end();
+  res.send(req.session.cart);
 
 });
 
@@ -119,6 +121,10 @@ router.post('/remove-from-cart', function(req, res) {
 router.get('/get-cart', function(req, res) {
   res.send(req.session.cart ? req.session.cart : "cart is empty.");
 });
+
+
+
+
 
 router.get('/cart', function(req,res) {
 
@@ -136,15 +142,13 @@ router.get('/cart', function(req,res) {
 
 });
 
+
+
+
 router.post('/handle-order', function(req,res) {
   handleOrder(req,res);
 });
 
-
-router.get('/test-session', function(req,res) {
-  req.session.test = req.session.test ? req.session.test+1 : 0;
-  res.send('test val is '+req.session.test);
-});
 
 
 module.exports = router;
